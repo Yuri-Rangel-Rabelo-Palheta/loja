@@ -1,13 +1,19 @@
-"use client"
+"use client";
 
-
+import { ReactNode, useRef } from "react";
 import MenuLateral from "./MenuLateral";
 import MenuSuperior from "./MenuSuperior";
 import Rodape from "./Rodape";
 
+import { CarrinhoProvider } from "../components/Carrinho";
 
-const Layout = ({ children }) => {
-    return (
+type LayoutProps = {
+  children: ReactNode;
+};
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <CarrinhoProvider>
       <div className="flex flex-col min-h-screen">
         <MenuSuperior />
         <div className="flex flex-1">
@@ -18,7 +24,8 @@ const Layout = ({ children }) => {
         </div>
         <Rodape />
       </div>
-    );
-  };
-  
-  export default Layout;
+    </CarrinhoProvider>
+  );
+}
+
+//export default Layout;
